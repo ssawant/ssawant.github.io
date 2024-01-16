@@ -1,0 +1,20 @@
+---
+title: "Santosh Sawant"
+about:
+  id: hero-heading
+  template: jolla
+  image: profile.jpg
+  links:
+    - icon: twitter
+      text: twitter
+      href: https://twitter.com
+    - icon: github
+      text: Github
+      href: https://github.com
+---
+
+
+
+I am a Senior Machine Learning Architect at Tredence, I lead a cross-functional team to deliver a cutting-edge Generative AI platform and products in the Data Analytics, Healthcare and ESG domain.
+
+
