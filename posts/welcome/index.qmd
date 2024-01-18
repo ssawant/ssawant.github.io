@@ -1,12 +1,12 @@
 ---
-title: "Welcome To My Blog"
-author: "Tristan O'Malley"
-date: "2024-01-13"
-categories: [news]
+title: "Fine-tune Mistral-7b with Direct Preference Optimization Boosting the performance of your supervised fine-tuned models"
+author: "Santosh Sawant"
+date: "2024-01-18"
+categories: [Large Language models]
 ---
 
-This is the first post in a Quarto blog. Welcome!
+Fine-tune Mistral-7b with Direct Preference Optimization Boosting the performance of your supervised fine-tuned models
 
 ![](thumbnail.jpg)
 
-Since this post doesn't specify an explicit `image`, the first image in the post will be used in the listing page of posts.
+Pre-trained Large Language Models (LLMs) can only perform next-token prediction, making them unable to answer questions. This is why these base models are then fine-tuned on pairs of instructions and answers to act as helpful assistants. However, this process can still be flawed: fine-tuned LLMs can be biased, toxic, harmful, etc. This is where Reinforcement Learning from Human Feedback (RLHF) comes into play.
