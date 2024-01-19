@@ -5,6 +5,9 @@ about:
   template: jolla
   image: profile.jpg
   links:
+    - icon: linkedin
+      text: Linkedin
+      href: https://www.linkedin.com/in/santoshnsavant/
     - icon: github
       text: Github
       href: https://github.com/ssawant
