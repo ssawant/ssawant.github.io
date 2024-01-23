@@ -17,6 +17,8 @@ website:
     right:
       - icon: github
         href: https://github.com/
+      - icon: linkedin
+        href: https://www.linkedin.com/in/santoshnsavant/
 format:
   html:
     theme: cosmo
