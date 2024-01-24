@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2024-01-24">
+<meta name="description" content="Santosh Sawant’s CV">
 
-<title>articles</title>
+<title>Curriculum vitæ</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +32,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -68,73 +68,15 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+  <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
             <div id="quarto-search" class="" title="Search"></div>
@@ -148,11 +90,11 @@ window.Quarto = {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./resume.html"> 
+    <a class="nav-link active" href="./resume.html" aria-current="page"> 
 <span class="menu-text">Resume</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./articles.html" aria-current="page"> 
+    <a class="nav-link" href="./articles.html"> 
 <span class="menu-text">Articles</span></a>
   </li>  
 </ul>
@@ -175,129 +117,57 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(3)</span></div><div class="category" data-category="hugging face">hugging face <span class="quarto-category-count">(1)</span></div><div class="category" data-category="llm">llm <span class="quarto-category-count">(2)</span></div><div class="category" data-category="model building">model building <span class="quarto-category-count">(2)</span></div><div class="category" data-category="tools">tools <span class="quarto-category-count">(1)</span></div></div></div>
+    
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Curriculum vitæ</h1>
+</div>
+
+<div>
+  <div class="description">
+    Santosh Sawant’s CV
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">CV last updated</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">January 24, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<style>
+.pdf {
+  max-width: 100%;
+    width: 600px;
+    height: 600px;
+    border: 10px solid rgba(0,0,0,.2);
+    margin: 0;
+}
+</style>
+<p><object data="./resume.pdf" type="application/pdf" width="800" height="400" border="0.5"><p>Unable to display PDF file. <a href="./resume.pdf">Download</a> instead.</p></object></p>
 
 
 
-
-
-
-
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-file-modified-sort="1706029195087">
-<div class="thumbnail">
-<p><a href="./posts/welcome/index.html" class="no-external"></a></p><a href="./posts/welcome/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./posts/welcome/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/welcome/index.html" class="no-external"></a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/welcome/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/welcome/index.html" class="no-external"></a>
-</div>
-</div>
-<div class="metadata">
-<p><a href="./posts/welcome/index.html" class="no-external"></a></p><a href="./posts/welcome/index.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="hugging face,llm,model building" data-listing-date-sort="1705948200000" data-listing-file-modified-sort="1706029097766" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2049">
-<div class="thumbnail">
-<p><a href="./posts/fine-tune-llms-hugging-face/fine-tune-llms-in-2024-with-trl.html" class="no-external"></a></p><a href="./posts/fine-tune-llms-hugging-face/fine-tune-llms-in-2024-with-trl.html" class="no-external">
-<p><img src="./posts/fine-tune-llms-hugging-face/01.jpeg" class="thumbnail-image"></p>
-</a><p><a href="./posts/fine-tune-llms-hugging-face/fine-tune-llms-in-2024-with-trl.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/fine-tune-llms-hugging-face/fine-tune-llms-in-2024-with-trl.html" class="no-external">How to Fine-Tune LLMs with TRL</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/fine-tune-llms-hugging-face/fine-tune-llms-in-2024-with-trl.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('hugging face'); return false;">
-hugging face
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('llm'); return false;">
-llm
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('model building'); return false;">
-model building
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/fine-tune-llms-hugging-face/fine-tune-llms-in-2024-with-trl.html" class="no-external">Large Language Models or LLMs have seen a lot of progress in the last year. We went from now ChatGPT competitor to a whole zoo of LLMs, including Meta AI’s Llama 2, Mistrals …</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/fine-tune-llms-hugging-face/fine-tune-llms-in-2024-with-trl.html" class="no-external">
-<div class="listing-date">
-Jan 23, 2024
-</div>
-<div class="listing-author">
-Santosh Sawant
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="tools,llm,model building" data-listing-date-sort="1705861800000" data-listing-file-modified-sort="1706028992865" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1430">
-<div class="thumbnail">
-<p><a href="./posts/mergekit/Mearge_LLMs_with_mergekit.html" class="no-external"></a></p><a href="./posts/mergekit/Mearge_LLMs_with_mergekit.html" class="no-external">
-<p><img src="./posts/mergekit/image.jpg" class="thumbnail-image"></p>
-</a><p><a href="./posts/mergekit/Mearge_LLMs_with_mergekit.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/mergekit/Mearge_LLMs_with_mergekit.html" class="no-external">Merge Model using Mergekit</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/mergekit/Mearge_LLMs_with_mergekit.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('tools'); return false;">
-tools
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('llm'); return false;">
-llm
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('model building'); return false;">
-model building
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/mergekit/Mearge_LLMs_with_mergekit.html" class="no-external">Model merging is a technique that combines two or more LLMs into a single model. It’s a relatively new and experimental method to create new models for cheap (no GPU…</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/mergekit/Mearge_LLMs_with_mergekit.html" class="no-external">
-<div class="listing-date">
-Jan 22, 2024
-</div>
-<div class="listing-author">
-Santosh Sawant
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

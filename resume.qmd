@@ -1,0 +1,17 @@
+---
+title: Curriculum vitæ
+description: "Santosh Sawant's CV"
+date: 2024-01-24
+published-title: CV last updated
+---
+<style>
+.pdf {
+  max-width: 100%;
+	width: 600px;
+	height: 600px;
+	border: 10px solid rgba(0,0,0,.2);
+	margin: 0;
+}
+</style>
+
+{{< embedpdf ./resume.pdf border=0.5 width=800 height=400 >}}
