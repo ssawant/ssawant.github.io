@@ -17,6 +17,6 @@ about:
 ---
 
 
-I am a Senior Machine Learning Architect at Tredence, I lead a cross-functional team to deliver a cutting-edge Generative AI platform and products in the Data Analytics, Healthcare and ESG domain.
+I am a Machine Learning Architect working on Generative AI platform and products in the Data Analytics, Healthcare and ESG domain.
 
 
