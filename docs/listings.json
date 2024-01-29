@@ -3,9 +3,15 @@
     "listing": "/articles.html",
     "items": [
       "/posts/welcome/index.html",
+      "/posts/EAGLE/EAGLE.html",
+      "/posts/MambaByte/MambaByte.html",
       "/posts/instruction-tune-llama-2/instruction-tune-llama-2-int4.html",
+      "/posts/Towards Conversational Diagnostic AI/Towards Conversational Diagnostic AI.html",
+      "/posts/ChatQA/ChatQA.html",
       "/posts/fine-tune-llms-hugging-face/fine-tune-llms-in-2024-with-trl.html",
-      "/posts/mergekit/Mearge_LLMs_with_mergekit.html"
+      "/posts/Medusa/Medusa.html",
+      "/posts/mergekit/Mearge_LLMs_with_mergekit.html",
+      "/posts/Tuning Language Models by Proxy/Tuning Language Models by Proxy.html"
     ]
   }
 ]
