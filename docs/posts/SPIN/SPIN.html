@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Santosh Sawant">
-<meta name="dcterms.date" content="2024-01-23">
+<meta name="dcterms.date" content="2024-01-05">
 
-<title>ChatQA: Building GPT-4 Level Conversational QA Models</title>
+<title>Self-Play Fine-Tuning (SPIN): Converts Weak Language Models to Strong Language Models</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -120,7 +120,7 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">ChatQA: Building GPT-4 Level Conversational QA Models</h1>
+      <h1 class="title">Self-Play Fine-Tuning (SPIN): Converts Weak Language Models to Strong Language Models</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">llm</div>
                 <div class="quarto-category">research paper</div>
@@ -141,7 +141,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">January 23, 2024</p>
+        <p class="date">January 5, 2024</p>
       </div>
     </div>
     
@@ -161,11 +161,12 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p><img src="01.jpeg" class="img-fluid"></p>
-<p>With all open source LLM models trying to outperform GPT-4 one may wonder, which one has truly been successful in Conversational QA - one of the elementary use cases of LLMs.</p>
-<p>Introducing ChatQA, a family of conversational question answering (QA) models, that obtain GPT-4 level accuracies. It proposes a two-stage instruction tuning method that can significantly improve the zero-shot conversational QA results from large language models (LLMs). To handle retrieval in conversational QA, it fine-tunes a dense retriever on a multiturn QA dataset, which provides comparable results to using the state-of-the-art query rewriting model while largely reducing deployment cost. Notably, ChatQA-70B can outperform GPT-4 in terms of average score on 10 conversational QA datasets (54.14 vs.&nbsp;53.90), without relying on any synthetic data from OpenAI GPT models</p>
-<p>In addition, it demonstrates that fine-tuning a single-turn query retriever using its own curated conversational QA data performs comparable to the state-of-the-art LLM-based query rewriting model, without the need of extra computational time and potential API cost from rewriting.</p>
-<p>Paper : <a href="https://arxiv.org/pdf/2401.10225.pdf">https://arxiv.org/pdf/2401.10225.pdf</a></p>
-<p>&nbsp; <code>arxiv:2401.10225</code> &nbsp;</p>
+<p>Self-Play Fine-Tuning (SPIN) is a new fine-tuning method to improve large language models (LLMs) without needing additional human-annotated data.</p>
+<p>The key idea is to use a self-play mechanism where the LLM plays against itself. Specifically, the LLM from the previous iteration generates synthetic responses. The new LLM being trained tries to discern between the synthetic responses and real human responses. This iterates, with the new LLM becoming the synthetic data generator for the next iteration.</p>
+<p>The method is shown to significantly enhance LLMs’ performance on a variety of benchmarks: - On the HuggingFace Open LLM Leaderboard, SPIN improves the average score from 58.14 to 63.16 with over 10% gains on some datasets. - On the MT-Bench benchmark, the score improves from 5.94 to 6.78. - The gains match or exceed models trained with additional human preference data.</p>
+<p>Theoretically, it is proven that SPIN converges when the LLM distribution aligns perfectly with the real data distribution.</p>
+<p>Overall, the self-play approach enables iterative improvement of LLMs without needing extra human feedback or data, converting weak models to strong models by unleashing the full potential of existing labeled data.</p>
+<p>Paper : <a href="https://arxiv.org/pdf/2401.01335.pdf">https://arxiv.org/pdf/2401.01335.pdf</a></p>
 
 
 

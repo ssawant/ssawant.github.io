@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Santosh Sawant">
-<meta name="dcterms.date" content="2024-01-23">
+<meta name="dcterms.date" content="2024-01-04">
 
-<title>ChatQA: Building GPT-4 Level Conversational QA Models</title>
+<title>A Comprehensive Survey of Hallucination Mitigation Techniques in Large Language Models</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -120,7 +120,7 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">ChatQA: Building GPT-4 Level Conversational QA Models</h1>
+      <h1 class="title">A Comprehensive Survey of Hallucination Mitigation Techniques in Large Language Models</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">llm</div>
                 <div class="quarto-category">research paper</div>
@@ -141,7 +141,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">January 23, 2024</p>
+        <p class="date">January 4, 2024</p>
       </div>
     </div>
     
@@ -161,11 +161,16 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p><img src="01.jpeg" class="img-fluid"></p>
-<p>With all open source LLM models trying to outperform GPT-4 one may wonder, which one has truly been successful in Conversational QA - one of the elementary use cases of LLMs.</p>
-<p>Introducing ChatQA, a family of conversational question answering (QA) models, that obtain GPT-4 level accuracies. It proposes a two-stage instruction tuning method that can significantly improve the zero-shot conversational QA results from large language models (LLMs). To handle retrieval in conversational QA, it fine-tunes a dense retriever on a multiturn QA dataset, which provides comparable results to using the state-of-the-art query rewriting model while largely reducing deployment cost. Notably, ChatQA-70B can outperform GPT-4 in terms of average score on 10 conversational QA datasets (54.14 vs.&nbsp;53.90), without relying on any synthetic data from OpenAI GPT models</p>
-<p>In addition, it demonstrates that fine-tuning a single-turn query retriever using its own curated conversational QA data performs comparable to the state-of-the-art LLM-based query rewriting model, without the need of extra computational time and potential API cost from rewriting.</p>
-<p>Paper : <a href="https://arxiv.org/pdf/2401.10225.pdf">https://arxiv.org/pdf/2401.10225.pdf</a></p>
-<p>&nbsp; <code>arxiv:2401.10225</code> &nbsp;</p>
+<p>The paper provides a comprehensive taxonomy categorizing over 32 techniques for mitigating hallucinations in large language models (LLMs). It groups the techniques into categories such as prompt engineering, self-refinement through feedback and reasoning, prompt tuning, and model development. Key mitigation techniques highlighted include:</p>
+<ul>
+<li><p>Retrieval Augmented Generation (RAG) which enhances LLM responses by retrieving information from authoritative external knowledge bases. This helps ground the responses in facts.</p></li>
+<li><p>Methods leveraging iterative feedback loops and self-contradiction detection to refine LLM outputs. For example, the Self-Reflection Methodology employs knowledge acquisition and answer generation over multiple cycles.</p></li>
+<li><p>Prompt tuning techniques like UPRISE which tune lightweight retrievers to automatically provide task-specific prompts that reduce hallucinations.</p></li>
+<li><p>Novel model decoding strategies such as Context-Aware Decoding that override an LLM’s biases by amplifying differences between outputs with and without context.</p></li>
+<li><p>Utilizing knowledge graphs and adding faithfulness based loss function</p></li>
+<li><p>Supervised Fine-tuning</p></li>
+</ul>
+<p>Paper : <a href="https://arxiv.org/pdf/2401.01313.pdf">https://arxiv.org/pdf/2401.01313.pdf</a></p>
 
 
 

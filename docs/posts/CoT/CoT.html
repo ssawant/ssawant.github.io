@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Santosh Sawant">
-<meta name="dcterms.date" content="2024-01-23">
+<meta name="dcterms.date" content="2024-01-12">
 
-<title>ChatQA: Building GPT-4 Level Conversational QA Models</title>
+<title>Chain of Thought (CoT): The Impact of Reasoning Step Length on Large Language Models</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -120,7 +120,7 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">ChatQA: Building GPT-4 Level Conversational QA Models</h1>
+      <h1 class="title">Chain of Thought (CoT): The Impact of Reasoning Step Length on Large Language Models</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">llm</div>
                 <div class="quarto-category">research paper</div>
@@ -141,7 +141,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">January 23, 2024</p>
+        <p class="date">January 12, 2024</p>
       </div>
     </div>
     
@@ -161,11 +161,9 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p><img src="01.jpeg" class="img-fluid"></p>
-<p>With all open source LLM models trying to outperform GPT-4 one may wonder, which one has truly been successful in Conversational QA - one of the elementary use cases of LLMs.</p>
-<p>Introducing ChatQA, a family of conversational question answering (QA) models, that obtain GPT-4 level accuracies. It proposes a two-stage instruction tuning method that can significantly improve the zero-shot conversational QA results from large language models (LLMs). To handle retrieval in conversational QA, it fine-tunes a dense retriever on a multiturn QA dataset, which provides comparable results to using the state-of-the-art query rewriting model while largely reducing deployment cost. Notably, ChatQA-70B can outperform GPT-4 in terms of average score on 10 conversational QA datasets (54.14 vs.&nbsp;53.90), without relying on any synthetic data from OpenAI GPT models</p>
-<p>In addition, it demonstrates that fine-tuning a single-turn query retriever using its own curated conversational QA data performs comparable to the state-of-the-art LLM-based query rewriting model, without the need of extra computational time and potential API cost from rewriting.</p>
-<p>Paper : <a href="https://arxiv.org/pdf/2401.10225.pdf">https://arxiv.org/pdf/2401.10225.pdf</a></p>
-<p>&nbsp; <code>arxiv:2401.10225</code> &nbsp;</p>
+<p>If you are doing prompt engineering for LLMs then you might have come across Chain of Thought (CoT) prompting, which is significant in improving the reasoning abilities of LLMS. However, the correlation between the effectiveness of CoT and the length of reasoning steps in prompts remains largely unknown.</p>
+<p>Length of reasoning steps/chains in prompting impacts the performance of large language models (LLMs) on tasks requiring reasoning abilities. Experiments show that increasing the number of reasoning steps in prompts, even without adding new information, significantly improves LLM performance across multiple datasets. Shortening steps diminishes performance. Surprisingly, incorrect rationales can still yield good results if they maintain sufficient step length, suggesting step length is more important than factual accuracy. The benefits of longer steps scale with task complexity: simpler tasks require fewer steps while complex tasks gain more from longer chains. Zero-shot prompting can also be improved by lengthening initial prompts to encourage more reasoning (e.g.&nbsp;“Think step-by-step, think more steps”). Compressing step lengths undermines few-shot CoT (chain-of-thought) performance, regressing it to zero-shot levels. Bigger LLMs require fewer steps to reach peak performance compared to smaller models, showing a relationship between model size and optimal step count. Altering questions within prompts has minimal impact, suggesting step length rather than question details primarily drives reasoning.</p>
+<p>Paper : <a href="https://arxiv.org/pdf/2401.04925.pdf">https://arxiv.org/pdf/2401.04925.pdf</a></p>
 
 
 

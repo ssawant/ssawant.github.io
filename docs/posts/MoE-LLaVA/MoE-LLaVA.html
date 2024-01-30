@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Santosh Sawant">
-<meta name="dcterms.date" content="2024-01-23">
+<meta name="dcterms.date" content="2024-01-30">
 
-<title>ChatQA: Building GPT-4 Level Conversational QA Models</title>
+<title>MoE-LLaVA: Mixture of Experts for Large Vision-Language Models</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -120,7 +120,7 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">ChatQA: Building GPT-4 Level Conversational QA Models</h1>
+      <h1 class="title">MoE-LLaVA: Mixture of Experts for Large Vision-Language Models</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">llm</div>
                 <div class="quarto-category">research paper</div>
@@ -141,7 +141,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">January 23, 2024</p>
+        <p class="date">January 30, 2024</p>
       </div>
     </div>
     
@@ -161,11 +161,20 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p><img src="01.jpeg" class="img-fluid"></p>
-<p>With all open source LLM models trying to outperform GPT-4 one may wonder, which one has truly been successful in Conversational QA - one of the elementary use cases of LLMs.</p>
-<p>Introducing ChatQA, a family of conversational question answering (QA) models, that obtain GPT-4 level accuracies. It proposes a two-stage instruction tuning method that can significantly improve the zero-shot conversational QA results from large language models (LLMs). To handle retrieval in conversational QA, it fine-tunes a dense retriever on a multiturn QA dataset, which provides comparable results to using the state-of-the-art query rewriting model while largely reducing deployment cost. Notably, ChatQA-70B can outperform GPT-4 in terms of average score on 10 conversational QA datasets (54.14 vs.&nbsp;53.90), without relying on any synthetic data from OpenAI GPT models</p>
-<p>In addition, it demonstrates that fine-tuning a single-turn query retriever using its own curated conversational QA data performs comparable to the state-of-the-art LLM-based query rewriting model, without the need of extra computational time and potential API cost from rewriting.</p>
-<p>Paper : <a href="https://arxiv.org/pdf/2401.10225.pdf">https://arxiv.org/pdf/2401.10225.pdf</a></p>
-<p>&nbsp; <code>arxiv:2401.10225</code> &nbsp;</p>
+<p>For Large Vision-Language Models (LVLMs), scaling the model can effectively improve performance. However, expanding model parameters significantly increases the training and inferring costs, as all model parameters are activated for each token in the calculation.</p>
+<p>In contrast, sparse Mixtures of Experts (MoE) effectively scale model capacity by using fixed activated parameters to process data, which has thrived in the field of NLP . Recently, Mistral LLM equipped with the MoE layers has gained popularity in LLMs. Mixtral-MoE8×7B achieves performance comparable to LLaMA 2-70B with fewer computational resources.</p>
+<p>However, directly applying MoE to train sparse LVLMs is challenging as it leads to significant performance degradation. Proper initialization is crucial for sparsifying the LVLM, and that’s exactly what MoE-tuning does. MoW-tuning - a novel three-stage training strategy for adapting MoE to LVLMs and preventing the model degradation caused by sparsity.</p>
+<p>MoE-LLaVA model operates by using multiple sparse paths, where each token is directed to different experts through a router. These activated experts collaboratively process the tokens, while inactive paths remain dormant. By stacking MoE encoder layers iteratively, the model creates a sparse pathway to a larger and more potent Large Vocabulary Language Model (LVLM). This approach allows for efficient and effective processing of input data by dynamically routing tokens to appropriate experts for processing.</p>
+<p>During experimentation MoELLaVA model demonstrates great potential for multi-modal understanding and hallucination inhibition. MoELLaVA achieves comparable performance to state-of-the-art 7B models with only 3B sparse activated parameters on multiple visual understanding datasets, and outperforms LLaVA-1.5-13B by 1.1% on the POPE hallucination benchmark with 2.2B activated parameters.</p>
+<p>Paper : <a href="https://arxiv.org/pdf/2401.15947.pdf">https://arxiv.org/pdf/2401.15947.pdf</a></p>
+<p>&nbsp;</p>
+<pre><code>@article{lin2023video,
+  title={Video-LLaVA: Learning United Visual Representation by Alignment Before Projection},
+  author={Lin, Bin and Zhu, Bin and Ye, Yang and Ning, Munan and Jin, Peng and Yuan, Li},
+  journal={arXiv preprint arXiv:2311.10122},
+  year={2023}
+}</code></pre>
+<p>&nbsp;</p>
 
 
 
