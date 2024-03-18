@@ -2,6 +2,7 @@
   {
     "listing": "/articles.html",
     "items": [
+      "/posts/RAFT/RAFT.html",
       "/posts/USER-LLM/USER-LLM.html",
       "/posts/RAT/RAT.html",
       "/posts/MoAI/MoAI.html",
