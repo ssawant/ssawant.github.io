@@ -2,6 +2,7 @@
   {
     "listing": "/articles.html",
     "items": [
+      "/posts/Gecko/Gecko.html",
       "/posts/Jamba/Jamba.html",
       "/posts/Mini-Gemini/Mini-Gemini.html",
       "/posts/RigorLLM/RigorLLM.html",

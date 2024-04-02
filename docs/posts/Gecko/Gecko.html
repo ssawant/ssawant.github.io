@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Santosh Sawant">
-<meta name="dcterms.date" content="2024-04-01">
+<meta name="dcterms.date" content="2024-04-02">
 
-<title>Jamba: A Hybrid Transformer-Mamba Language Model</title>
+<title>Gecko: Versatile Text Embeddings Distilled from Large Language Models</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -120,7 +120,7 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Jamba: A Hybrid Transformer-Mamba Language Model</h1>
+      <h1 class="title">Gecko: Versatile Text Embeddings Distilled from Large Language Models</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">llm</div>
                 <div class="quarto-category">research paper</div>
@@ -141,7 +141,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">April 1, 2024</p>
+        <p class="date">April 2, 2024</p>
       </div>
     </div>
     
@@ -161,19 +161,13 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p><img src="01.jpeg" class="img-fluid"></p>
-<p>Finally, the first production-grade commercially available Mamba-based model delivering best-in-class quality and performance is here. Introducing Jamba, a novel architecture which combines Attention and Mamba layers, with MoE modules. Here are some key features of Jamba</p>
-<ul>
-<li>3X throughput on long contexts compared to Mixtral 8x7B</li>
-<li>Democratizes access to a massive 256K context window</li>
-<li>The only model in its size class that fits up to 140K context on a single GPU</li>
-</ul>
-<p>So how does Jamba provide flexibility for balancing performance and memory requirements, while the previous Mamba-Transformer based models were not able to do so ?</p>
-<p>It all comes down to Jamba architecture choice, which aims to provide not only a small number of active parameters but also an 8x smaller KV cache compared to a vanilla Transformer. The basic component is a Jamba block, which may be repeated in sequence. Each Jamba block is a combination of Mamba or Attention layers. Each such layer contains either an attention or a Mamba module, followed by a multi-layer perceptron (MLP). Further, In Jamba some of the MLPs may be replaced by MoE layers, which helps increase the model capacity while keeping the active number of parameters, and thus the compute, small</p>
-<p>In summary, the different degrees of freedom in the Jamba architecture are:<br>
-* <code>l</code>: The number of layers. * <code>a</code> : <code>m</code> : ratio of attention-to-Mamba layers.<br>
-* <code>e</code>: how often to use MoE instead of a single MLP. * <code>n</code>: total number of experts per layer. * <code>K</code>: number of top experts used at each token.</p>
-<p>Given this design space, Jamba provides flexibility in preferring certain properties over others. For example, increasing <code>m</code> and decreasing <code>a</code>, i.e, increasing the ratio of Mamba layers at the expense of attention layers, reduces the required memory for storing the key-value cache thus reducing overall memory space. Increasing the ratio of Mamba layers also improves throughput, especially at long sequences. However, decreasing <code>a</code> might lower the model’s capabilities. Other architecture details are standard, including grouped-query attention (GQA), SwiGLU activation function, and load balancing for the MoE. The vocabulary size is 64K. The tokenizer is trained with BPE and each digit is a separate token.</p>
-<p>Paper : <a href="https://arxiv.org/pdf/2403.19887.pdf">https://arxiv.org/pdf/2403.19887.pdf</a></p>
+<p>Recent advancement in the Text Embedding model has been instrumental for various downstream tasks including document retrieval, sentence similarity, classification, and clustering. However, there present challenges in developing general-purpose text embedding models as such models require large amounts of training data to comprehensively cover desired domains and skills. Large language models (LLMs) offer a powerful alternative in such scenarios.</p>
+<p>So to what extent can we leverage LLMs directly to improve text embedding models?</p>
+<p>Introduced Gecko, a versatile text embedding model distilled from large language models. Gecko utilizes a two-step distillation process that begins with generating diverse, synthetic paired data using an LLM. Next, data quality is further refined by retrieving a set of candidate passages for each query, and relabeling the positive and hard negative passages using the same LLM.</p>
+<p>To train Gecko, a 1.2B parameter pre-trained transformer base language model is being used that undergoes two additional training stages: pre-finetuning and fine-tuning. During pre-finetuning stage model is been trained on large self-supervised text corpus such as question-answer pairs from online forums and QA websites.</p>
+<p>For fine-tuning, Gecko uses a novel fine-tuning dataset FRet, the Few-shot Prompted Retrieval dataset. Given a sampled passage from the web, FRet first utilizes LLMs to generate a relevant task and a query for the passage. Then, each query and task is fed into a pre-trained embedding model to obtain nearest neighbor passages, which are then scored by the LLM to mine positive and negative passages.</p>
+<p>By combining this LLM-generated and LLM-ranked data with human-annotated data, Gecko-1B with 768-dimensional embeddings achieves the best performance on the popular MTEB benchmark, Gecko with 256 embedding dimensions outperforms all existing entries with 768 embedding size. Gecko with 768 embedding dimensions achieves an average score of 66.31, competing with 7x larger models and 5x higher dimensional embeddings. Moreover, Gecko often outperforms other systems that use either larger base models (7B) or higher dimensional embeddings (1k to 4k).</p>
+<p>Paper : <a href="https://arxiv.org/pdf/2403.20327.pdf">https://arxiv.org/pdf/2403.20327.pdf</a></p>
 
 
 
