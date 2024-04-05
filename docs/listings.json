@@ -2,6 +2,7 @@
   {
     "listing": "/articles.html",
     "items": [
+      "/posts/ReFT/ReFT.html",
       "/posts/Mixture-of-Depths/Mixture-of-Depths.html",
       "/posts/sDPO/sDPO.html",
       "/posts/Gecko/Gecko.html",
