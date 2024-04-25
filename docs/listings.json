@@ -2,6 +2,8 @@
   {
     "listing": "/articles.html",
     "items": [
+      "/posts/CodecLM/CodecLM.html",
+      "/posts/LLM-R2/LLM-R2.html",
       "/posts/TransformerFAM/TransformerFAM.html",
       "/posts/RecurrentGemma/RecurrentGemma.html",
       "/posts/MEGALODON/MEGALODON.html",
