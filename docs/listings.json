@@ -2,6 +2,7 @@
   {
     "listing": "/articles.html",
     "items": [
+      "/posts/NeMo-Aligner/NeMo-Aligner.html",
       "/posts/PROMETHEUS2/PROMETHEUS2.html",
       "/posts/Octopusv4/Octopusv4.html",
       "/posts/PoLL/PoLL.html",
