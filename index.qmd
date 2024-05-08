@@ -17,4 +17,4 @@ about:
 ---
 
 
-I am a Machine Learning Architect working on Generative AI platform and products in the Data Analytics, Healthcare and ESG domain.
+LLM Architect learning to innovate, optimize, and scale the next generation of large language models.
