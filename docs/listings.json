@@ -2,6 +2,7 @@
   {
     "listing": "/articles.html",
     "items": [
+      "/posts/GraphRAG /GraphRAG.html",
       "/posts/Flash Attention Stable/Flash Attention Stable.html",
       "/posts/LayerSkip/LayerSkip.html",
       "/posts/Multi-token Prediction/Multi-token Prediction.html",
