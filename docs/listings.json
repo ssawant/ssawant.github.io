@@ -2,6 +2,7 @@
   {
     "listing": "/articles.html",
     "items": [
+      "/posts/SUPRA/SUPRA.html",
       "/posts/GraphRAG /GraphRAG.html",
       "/posts/Flash Attention Stable/Flash Attention Stable.html",
       "/posts/LayerSkip/LayerSkip.html",
