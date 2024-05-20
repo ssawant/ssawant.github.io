@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Santosh Sawant">
-<meta name="dcterms.date" content="2024-05-16">
+<meta name="dcterms.date" content="2024-05-20">
 
-<title>Xmodel-VLM: A Simple Baseline for Multimodal Vision Language Model</title>
+<title>Layer-Condensed KV Cache for Efficient Inference of Large Language Models</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -120,7 +120,7 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Xmodel-VLM: A Simple Baseline for Multimodal Vision Language Model</h1>
+      <h1 class="title">Layer-Condensed KV Cache for Efficient Inference of Large Language Models</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">llm</div>
                 <div class="quarto-category">research paper</div>
@@ -141,7 +141,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">May 16, 2024</p>
+        <p class="date">May 20, 2024</p>
       </div>
     </div>
     
@@ -161,11 +161,11 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p><img src="01.jpeg" class="img-fluid"></p>
-<p>Recently small-scale visual language models performance have come in par with its larger-scale counterparts. Models such as LLaVAPhi [47], which combines the open source multi-modal model LLaVA-1.5 and the open source small language model Phi-2(2.7B) have shown great promise to improve multi-modal model resource efficiency. However, despite the encouraging advancements made in the realm of visual language models, the pursuit of a genuinely optimal harmony between performance and efficiency remains an active and ongoing challenge.</p>
-<p>To address this researchers have introduced Xmodel-VLM, a cutting-edge multimodal vision language model designed for efficient deployment on consumer GPU servers. The architecture of Xmodel-VLM, closely mirrors that of LLaVA-1.5. It consists of three key components: (1) a vision encoder : a pre-trained CLIP ViT-L/14 with a resolution of 336×336 (2) a lightweight language model (LLM) : an lightweight language model Xmodel-LM 1.1B from scratch based on LLaVA architecture. (3) a projector responsible for aligning the visual and textual spaces. It utilizes a two-layer MLP to strengthen the link between the vision encoder and LLM, employing the Mish activation function. This innovative projector, known as XDP, acts as both a connection enhancer and a downsampling mechanism, reducing visual tokens by 75%. XDP’s design emphasizes simplicity and effectiveness.</p>
-<p>The training of Xmodel_VLM occurs in two main stages: Stage I - Pre-training: In this stage, the vision encoder is kept frozen The XDP projector and the LLM (Language Model) are both learnable. Stage II - Multi-task Training: Similar to Stage I, the vision encoder remains frozen, while both the XDP projector and the LLM are learnable. This stage involves training the model on multiple tasks simultaneously.</p>
-<p>During evaluation across a variety of datasets: VizWiz, SQAI, VQA, POPE, GQA, MMB, MMBCN, MMVet and MME Xmodel-VLM 1.1B demonstrates competitive performance against Qwen-7B, LLaMA-7B and Vicuna-13B despite having small model parameter.</p>
-<p>Paper : https://lnkd.in/gBK9W-2H</p>
+<p>Key-value (KV) cache is one of the most significant parts of any transformer based LLM model and takes over 30% of the GPU memory during deployment. Hence KV cache plays a critical role in deciding overall LLMs throughput and latency. Recently, various work has been focused on improving KV cache performance either by prompt compression or caching strategies such as cache evacuation and sequence caching.</p>
+<p>Now researchers have proposed a novel perspective that is orthogonal to previous efforts: Layer-Condensed KV Cache, a novel method that only computes and caches the KVs of a small number of layers, thus significantly saving memory consumption and improving inference throughput.</p>
+<p>Layer-Condensed KV Cache, a new variant of transformer decoders in which queries of all layers are paired with keys and values of just the top layer so that model do not have to cache or even compute KVs for layers other than the top layer, saving both memory consumption and computation. Furthermore, since models no longer need to compute KVs for these layers, nor do they need to keep the weights WK, WV that map hidden representations to KVs for these layers, thus also saving model parameters.</p>
+<p>During experiments on Llama show that this model achieves up to 32× larger batch sizes and up to 26× higher throughput than standard transformers for LLMs of 1B–30B parameters; at the same time, the model has competitive performance to standard transformers in language modeling and downstream tasks. In addition, this method is orthogonal to existing transformer memory-saving techniques, so it is straightforward to integrate them with our model, achieving further improvement in inference efficiency.</p>
+<p>Paper : https://lnkd.in/d3XcDA4Z</p>
 
 
 
