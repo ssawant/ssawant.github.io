@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Santosh Sawant">
-<meta name="dcterms.date" content="2024-05-28">
+<meta name="dcterms.date" content="2024-05-29">
 
-<title>Zamba: A Compact 7B SSM Hybrid Model</title>
+<title>VeLoRA: Memory Efficient Training using Rank-1 Sub-Token Projections</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -120,7 +120,7 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Zamba: A Compact 7B SSM Hybrid Model</h1>
+      <h1 class="title">VeLoRA: Memory Efficient Training using Rank-1 Sub-Token Projections</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">llm</div>
                 <div class="quarto-category">research paper</div>
@@ -141,7 +141,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">May 28, 2024</p>
+        <p class="date">May 29, 2024</p>
       </div>
     </div>
     
@@ -161,11 +161,11 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p><img src="01.jpeg" class="img-fluid"></p>
-<p>Recently, State-of-the-art Transformer-SSM hybrid Architecture has been a driving force in Open source LLMs. Inline with such trends researchers from Zyphra have launched Zamba, a novel 7B SSM-transformer hybrid model which achieves competitive performance against leading open-weight models at a comparable scale. Zamba is trained on 1T tokens from openly available datasets and is the best non-transformer model at this scale.</p>
-<p>The Zamba architecture consists of a backbone of standard Mamba blocks connected to a shared attention and MLP block. This block is repeated every 6 Mamba blocks but has shared parameters, which enables Mamba to utilize more FLOPs for increased performance at the same memory cost. The input embeddings are always concatenated with the residual stream going into the shared attention block as this provides an additional path for the model to remember the inputs. After the block, a learnt linear projection maps the output back to the residual stream.</p>
-<p>Due to its architecture, Zamba is significantly faster at inference than comparable transformer models and requires substantially less memory for generation of long sequences. Zamba is pretrained in two phases: the first phase is based on existing web datasets, while the second one consists of annealing the model over high quality instruct and synthetic datasets, and is characterized by a rapid learning rate decay</p>
-<p>Zamba is also the highest-performing SSM in the small 7B model range and the highest-performing dense SSM model available. Zamba matches state-of-the-art 7B models on many linguistic evals, while lagging slightly behind on tests of reasoning and in context learning, which may be due to the significant data disparity between Zamba and other leading ∼7B models.</p>
-<p>Paper : <a href="https://arxiv.org/pdf/2405.16712">https://arxiv.org/pdf/2405.16712</a></p>
+<p>LLM Training and finetuning are still far too computationally and memory intensive tasks. Several techniques have been proposed to reduce these memory requirements, such as GaLore, gradient checkpointing, reversible backpropagation, parameter-efficient finetuning, quantization and activation offloading. While these methods are promising and lower the memory cost, they also might introduce a substantial computational overhead, are limited in their memory savings, or require specialized hardware.</p>
+<p>To address these challenges researchers have introduced a novel approach for efficient training and finetuning, called Vector projected LoRA (VeLoRA). VeLoRA simply divides the tokens up into smaller sub-tokens before projecting them onto a fixed 1-dimensional subspace during the forward pass. These features are then coarsely reconstructed during the backward pass to implement the update rules. By compressing and then reconstructing the activations on the fly, VeLoRA reduces the peak activation memory footprint to a tiny fraction of what is required to store the original activations. This enables fitting much larger models into limited GPU memory compared to approaches like GaLore or gradient checkpointing.</p>
+<p>VeLoRA memory-efficient algorithm consists of two components: (i) The grouping strategy to divide the original high-dimensional tokens into much smaller sub-tokens; and (ii) Fixed rank-1 projections of these sub-tokens using cheap heuristically initialized principal components. Given a large pre-trained model, above steps are applied to compress the intermediate activations saved during training while preserving most of the original model’s training dynamics.</p>
+<p>VeLoRA was evaluated on both moderately-sized vision transformers as well as in large language models. VeLoRA was found to significantly reduce memory requirements while improving the performance effectiveness on VTAB-1K, MMLU, GLUE, and C4 benchmarks outperforming state-of-the-art methods such as LoRA, QLoRA or GaLore.</p>
+<p>Paper : <a href="https://arxiv.org/pdf/2405.17991">https://arxiv.org/pdf/2405.17991</a></p>
 
 
 
