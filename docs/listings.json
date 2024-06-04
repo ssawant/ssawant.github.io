@@ -2,6 +2,7 @@
   {
     "listing": "/articles.html",
     "items": [
+      "/posts/MMLU-Pro/MMLU-Pro.html",
       "/posts/CoPE/CoPE.html",
       "/posts/METRAG/METRAG.html",
       "/posts/Nest/Nest.html",
