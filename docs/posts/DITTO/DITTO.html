@@ -9,7 +9,7 @@
 <meta name="author" content="Santosh Sawant">
 <meta name="dcterms.date" content="2024-06-04">
 
-<title>MMLU-Pro: A More Robust and Challenging Multi-Task Language Understanding Benchmark</title>
+<title>Show, Don’t Tell: Aligning Language Models with Demonstrated Feedback</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -120,7 +120,7 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">MMLU-Pro: A More Robust and Challenging Multi-Task Language Understanding Benchmark</h1>
+      <h1 class="title">Show, Don’t Tell: Aligning Language Models with Demonstrated Feedback</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">llm</div>
                 <div class="quarto-category">research paper</div>
@@ -161,11 +161,12 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p><img src="01.jpeg" class="img-fluid"></p>
-<p>In the age of large-scale language models, benchmarks like the Massive Multitask Language Understanding (MMLU) have been pivotal in pushing the boundaries of what AI can achieve in language comprehension and reasoning across diverse domains. MMLU includes a broad range of exam questions from 57 subjects across STEM, the humanities, the social sciences, etc. However, the rapid progress of current LLMs has quickly led to performance saturation on MMLU. Since GPT-4 achieved 86.4% in March 2023, there has not been any significant progress on the benchmark. Even GPT-4o achieved 1% improvement on MMLU to obtain 87.4%.</p>
-<p>This is due to the structure of the Multiple-Choice Machine Reading Comprehension (MMLU) dataset which provides only three options, potentially allowing LLMs to guess answers without understanding. Further, MMLU questions are often more about knowledge recall than reasoning, especially in STEM subjects, making them easier. Finally, some questions are unanswerable or wrongly annotated, limiting the dataset’s usefulness and affecting model performance.</p>
-<p>To address these challenges researchers have introduced MMLU-Pro: a comprehensive benchmark designed for proficient-level multi-discipline language understanding and reasoning. MMLU-Pro spans 14 diverse domains including mathematics, physics, chemistry, law, engineering, psychology, and health, encompassing over 12,000 questions and thus meeting the breadth requirement. MMLUPro is distinctive from MMLU in the following aspects: * 1. MMLU-Pro has ten options, which contain 3x more distractors than MMLU. By increasing the distractor numbers, it significantly reduces the probability of correct guess by chance to boost the benchmark’s difficulty and robustness. * 2. MMLU-Pro increases the portion of challenging college-level exam problems. These questions require LLM to perform deliberate reasoning in different domains to derive the final answer. * 3. MLU-Pro integrates two rounds of expert reviews to reduce the noise of the dataset. The first round is based on expert verification. In the second round, it utilizes the SoTA LLMs to identify potential errors and employ annotators to perform more targeted verification.</p>
-<p>Experimental results show that MMLU-Pro not only raises the challenge, causing a significant drop in accuracy by 16% to 33% compared to MMLU but also demonstrates greater stability under varying prompts. With 24 different prompt styles tested, the sensitivity of model scores to prompt variations decreased from 4-5% in MMLU to just 2% in MMLU-Pro. In conclusion, MMLU-Pro is a more discriminative benchmark to better track progress of both present and upcoming LLMs.</p>
-<p>Paper : <a href="https://arxiv.org/pdf/2406.01574">https://arxiv.org/pdf/2406.01574</a></p>
+<p>Aligning Large Language Models (LLMs) with human values and preferences is essential for making them helpful and safe. However, alignment can be challenging, especially for the largest and most competent LLMs which often require a large corpus of (un)acceptable behavior (on the order of ≈ 1K samples.</p>
+<p>Is it possible to align an LLM to a specific setting by leveraging a very small number (&lt; 10) of demonstrations as feedback ?</p>
+<p>Well that is what researchers from Stanford have addressed with Demonstration ITerated Task Optimization (DITTO), a framework for aligning LLMs to specific settings by providing a small number of demonstrations be drawn from a user’s existing interaction logs, or from direct edits made to LLM outputs. DITTO, scaffolds a handful of these demonstrations (&lt; 10) into a substantial dataset of preference comparisons, by treating users’ demonstrations as preferred over model output from both the original LLM and models’ earlier training iterations. This augmented dataset of demonstration-grounded comparisons can then be used to update the language model using an alignment algorithm like DPO.</p>
+<p>In general, DITTO iteratively aligns LLMs to demonstrated behavior. When a user supplies demonstrations (through edits to a model’s output, past preferred interaction history, or writing examples from scratch), DITTO treats these demonstrations as preferred to all model behavior, including earlier iterations of the trained model. Using demonstrations as feedback allows for cheap generation of online comparison data and enables few-shot alignment with just a handful of samples.</p>
+<p>DITTO’s ability was evaluated to learn fine-grained style and task alignment across domains such as news articles, emails, and blog posts. Additionally, a user study was conducted soliciting a range of demonstrations from participants (N = 16). Across these benchmarks and user study, it was found that win-rates for DITTO outperform few-shot prompting, supervised fine-tuning, and other self-play methods by an average of 19% points. By using demonstrations as feedback directly, DITTO offers a novel method for effective customization of LLMs.</p>
+<p>Paper : <a href="https://arxiv.org/pdf/2406.00888">https://arxiv.org/pdf/2406.00888</a></p>
 
 
 
