@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Santosh Sawant">
-<meta name="dcterms.date" content="2024-06-05">
+<meta name="dcterms.date" content="2024-06-06">
 
-<title>Show, Don’t Tell: Aligning Language Models with Demonstrated Feedback</title>
+<title>Block Transformer: Global-to-Local Language Modeling for Fast Inference</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -120,7 +120,7 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Show, Don’t Tell: Aligning Language Models with Demonstrated Feedback</h1>
+      <h1 class="title">Block Transformer: Global-to-Local Language Modeling for Fast Inference</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">llm</div>
                 <div class="quarto-category">research paper</div>
@@ -141,7 +141,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">June 5, 2024</p>
+        <p class="date">June 6, 2024</p>
       </div>
     </div>
     
@@ -161,12 +161,17 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p><img src="01.jpeg" class="img-fluid"></p>
-<p>Aligning Large Language Models (LLMs) with human values and preferences is essential for making them helpful and safe. However, alignment can be challenging, especially for the largest and most competent LLMs which often require a large corpus of (un)acceptable behavior (on the order of ≈ 1K samples.</p>
-<p>Is it possible to align an LLM to a specific setting by leveraging a very small number (&lt; 10) of demonstrations as feedback ?</p>
-<p>Well that is what researchers from Stanford have addressed with Demonstration ITerated Task Optimization (DITTO), a framework for aligning LLMs to specific settings by providing a small number of demonstrations be drawn from a user’s existing interaction logs, or from direct edits made to LLM outputs. DITTO, scaffolds a handful of these demonstrations (&lt; 10) into a substantial dataset of preference comparisons, by treating users’ demonstrations as preferred over model output from both the original LLM and models’ earlier training iterations. This augmented dataset of demonstration-grounded comparisons can then be used to update the language model using an alignment algorithm like DPO.</p>
-<p>In general, DITTO iteratively aligns LLMs to demonstrated behavior. When a user supplies demonstrations (through edits to a model’s output, past preferred interaction history, or writing examples from scratch), DITTO treats these demonstrations as preferred to all model behavior, including earlier iterations of the trained model. Using demonstrations as feedback allows for cheap generation of online comparison data and enables few-shot alignment with just a handful of samples.</p>
-<p>DITTO’s ability was evaluated to learn fine-grained style and task alignment across domains such as news articles, emails, and blog posts. Additionally, a user study was conducted soliciting a range of demonstrations from participants (N = 16). Across these benchmarks and user study, it was found that win-rates for DITTO outperform few-shot prompting, supervised fine-tuning, and other self-play methods by an average of 19% points. By using demonstrations as feedback directly, DITTO offers a novel method for effective customization of LLMs.</p>
-<p>Paper : <a href="https://arxiv.org/pdf/2406.00888">https://arxiv.org/pdf/2406.00888</a></p>
+<p>Generating tokens with transformer-based autoregressive language models (LMs) is costly due to the self-attention mechanism that attends to all previous tokens. To apply self-attention, the key-value (KV) cache of all previous sequences must be retrieved from memory at every decoding step. Thereby, this KV cache IO becomes a significant bottleneck in batch inference.</p>
+<p>To address this issue researchers have introduced Block Transformer architecture which adopts hierarchical global-to-local modeling to autoregressive transformers to mitigate the inference bottlenecks of self-attention. The Block Transformer architecture introduces a novel approach to modeling global dependencies by using self-attention between coarse blocks at lower layers and decoding fine-grained tokens within local blocks at upper layers. Here’s how it works:</p>
+<ol type="1">
+<li><p><strong>Embedding Blocks</strong>: The architecture first embeds each block of input tokens into an input block embedding using a module called the embedder.</p></li>
+<li><p><strong>Block Decoder</strong>: This is an autoregressive transformer that operates on the block embeddings. It applies self-attention between blocks to decode a context block embedding, which contains information necessary for predicting the next block.</p></li>
+<li><p><strong>Token Decoder</strong>: This component autoregressively decodes the token contents of the next block, applying local self-attention between only the tokens within the block. It relies solely on the output block embedding for global context information.</p></li>
+</ol>
+<p>This design significantly reduces self-attention costs, making them linear to the total context length, and eliminates the need to prefill prompt tokens during inference.</p>
+<p>By leveraging global and local modules, the Block Transformer architecture demonstrates 10–20x gains in inference throughput compared to vanilla transformers with equivalent perplexity. Block Transformer architecture introduces a new approach to optimize language model inference through novel application of global-to-local modeling.</p>
+<p>Paper : <a href="https://arxiv.org/pdf/2406.02657">https://arxiv.org/pdf/2406.02657</a></p>
+<p>Code : <a href="https://github.com/itsnamgyu/block-transformer">https://github.com/itsnamgyu/block-transformer</a></p>
 
 
 
