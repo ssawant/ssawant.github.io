@@ -2,6 +2,7 @@
   {
     "listing": "/articles.html",
     "items": [
+      "/posts/Instruction Pre-Training/Instruction Pre-Training.html",
       "/posts/LongRAG/LongRAG.html",
       "/posts/Whiteboard-of-Thought/Whiteboard-of-Thought.html",
       "/posts/Self-MoE/Self-MoE.html",
