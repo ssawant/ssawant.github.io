@@ -2,6 +2,8 @@
   {
     "listing": "/articles.html",
     "items": [
+      "/posts/AutoRAG-HP/AutoRAG-HP.html",
+      "/posts/LLM-Compiler/LLM_Compiler.html",
       "/posts/Instruction Pre-Training/Instruction Pre-Training.html",
       "/posts/LongRAG/LongRAG.html",
       "/posts/Whiteboard-of-Thought/Whiteboard-of-Thought.html",
