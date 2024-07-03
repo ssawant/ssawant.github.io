@@ -2,6 +2,8 @@
   {
     "listing": "/articles.html",
     "items": [
+      "/posts/MInference/MInference.html",
+      "/posts/MIRAI/MIRAI.html",
       "/posts/AutoRAG-HP/AutoRAG-HP.html",
       "/posts/LLM-Compiler/LLM_Compiler.html",
       "/posts/Instruction Pre-Training/Instruction Pre-Training.html",
