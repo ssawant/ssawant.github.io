@@ -2,6 +2,7 @@
   {
     "listing": "/articles.html",
     "items": [
+      "/posts/Best Practice RAG/BestPracticeRAG.html",
       "/posts/MInference/MInference.html",
       "/posts/MIRAI/MIRAI.html",
       "/posts/AutoRAG-HP/AutoRAG-HP.html",
