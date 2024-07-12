@@ -2,6 +2,8 @@
   {
     "listing": "/articles.html",
     "items": [
+      "/posts/FlashAttention-3/FlashAttention-3.html",
+      "/posts/Metron/Metron.html",
       "/posts/Composable Interventions/Composable Interventions.html",
       "/posts/ARMT/ARMT.html",
       "/posts/CLA/CLA.html",
