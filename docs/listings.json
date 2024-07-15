@@ -2,6 +2,7 @@
   {
     "listing": "/articles.html",
     "items": [
+      "/posts/AgentInstruct/AgentInstruct.html",
       "/posts/FlashAttention-3/FlashAttention-3.html",
       "/posts/Metron/Metron.html",
       "/posts/Composable Interventions/Composable Interventions.html",
