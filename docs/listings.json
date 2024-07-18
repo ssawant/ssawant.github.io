@@ -2,6 +2,7 @@
   {
     "listing": "/articles.html",
     "items": [
+      "/posts/E5-V/E5-V.html",
       "/posts/NeedleBench/NeedleBench.html",
       "/posts/SHERL/SHERL.html",
       "/posts/AgentInstruct/AgentInstruct.html",
