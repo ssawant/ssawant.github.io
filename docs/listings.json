@@ -2,6 +2,8 @@
   {
     "listing": "/articles.html",
     "items": [
+      "/posts/Llama31/Llama31.html",
+      "/posts/BOND/BOND.html",
       "/posts/Q-Sparse/Q-Sparse.html",
       "/posts/SA/SA.html",
       "/posts/E5-V/E5-V.html",
