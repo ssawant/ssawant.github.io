@@ -2,6 +2,7 @@
   {
     "listing": "/articles.html",
     "items": [
+      "/posts/LazyLLM/LazyLLM.html",
       "/posts/DiT-MoE/DiT-MoE.html",
       "/posts/DDK/DDK.html",
       "/posts/CoD/CoD.html",
