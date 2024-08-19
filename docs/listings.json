@@ -2,6 +2,8 @@
   {
     "listing": "/articles.html",
     "items": [
+      "/posts/xGen-MM/xGen-MM.html",
+      "/posts/DeepSeek-Prover/DeepSeek-Prover.html",
       "/posts/rStar/rStar.html",
       "/posts/PAD/PAD.html",
       "/posts/CODEXGRAPH/CODEXGRAPH.html",
