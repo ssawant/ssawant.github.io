@@ -2,6 +2,9 @@
   {
     "listing": "/articles.html",
     "items": [
+      "/posts/Generative Verifiers/Generative Verifiers.html",
+      "/posts/Eagle/Eagle.html",
+      "/posts/ToxicDetector/ToxicDetector.html",
       "/posts/Show-o/Show-o.html",
       "/posts/Strategist/Strategist.html",
       "/posts/Minitron/Minitron.html",
