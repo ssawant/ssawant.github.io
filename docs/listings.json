@@ -2,6 +2,7 @@
   {
     "listing": "/articles.html",
     "items": [
+      "/posts/DocOwl2/DocOwl2.html",
       "/posts/Generative Verifiers/Generative Verifiers.html",
       "/posts/Eagle/Eagle.html",
       "/posts/ToxicDetector/ToxicDetector.html",
