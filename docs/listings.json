@@ -3,6 +3,7 @@
     "listing": "/articles.html",
     "items": [
       "/posts/GraphRAG auto-tuning/GraphRAG auto-tuning.html",
+      "/posts/MemoRAG/MemoRAG.html",
       "/posts/DocOwl2/DocOwl2.html",
       "/posts/Generative Verifiers/Generative Verifiers.html",
       "/posts/Eagle/Eagle.html",
