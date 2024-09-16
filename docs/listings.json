@@ -2,6 +2,9 @@
   {
     "listing": "/articles.html",
     "items": [
+      "/posts/scot/scot.html",
+      "/posts/OneGen/OneGen.html",
+      "/posts/AWM/AWM.html",
       "/posts/MemoRAG/MemoRAG.html",
       "/posts/GraphRAG auto-tuning/GraphRAG auto-tuning.html",
       "/posts/DocOwl2/DocOwl2.html",
