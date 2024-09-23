@@ -2,6 +2,7 @@
   {
     "listing": "/articles.html",
     "items": [
+      "/posts/Contextual Retrieval/Contextual Retrieval.html",
       "/posts/SCoRe/SCoRe.html",
       "/posts/jina-embeddings-v3/jina-embeddings-v3.html",
       "/posts/Promptrieve/Promptrieve.html",
