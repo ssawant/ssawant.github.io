@@ -2,6 +2,10 @@
   {
     "listing": "/articles.html",
     "items": [
+      "/posts/SOS-BENCH/SOS-BENCH.html",
+      "/posts/MaskLLM/MaskLLM.html",
+      "/posts/HyperAgent/HyperAgent.html",
+      "/posts/bge-en-icl/bge-en-icl.html",
       "/posts/Contextual Retrieval/Contextual Retrieval.html",
       "/posts/SCoRe/SCoRe.html",
       "/posts/jina-embeddings-v3/jina-embeddings-v3.html",
