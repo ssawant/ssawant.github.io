@@ -2,6 +2,8 @@
   {
     "listing": "/articles.html",
     "items": [
+      "/posts/Backtracking/Backtracking.html",
+      "/posts/RULER/RULER.html",
       "/posts/SOS-BENCH/SOS-BENCH.html",
       "/posts/MaskLLM/MaskLLM.html",
       "/posts/HyperAgent/HyperAgent.html",
