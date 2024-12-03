@@ -2,6 +2,7 @@
   {
     "listing": "/articles.html",
     "items": [
+      "/posts/ETA/ETA.html",
       "/posts/LongKey/LongKey.html",
       "/posts/StarAttention/StarAttention.html",
       "/posts/VisualLens/VisualLens.html",
