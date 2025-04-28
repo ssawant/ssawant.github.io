@@ -2,6 +2,8 @@
   {
     "listing": "/articles.html",
     "items": [
+      "/posts/BitNetv2/BitNetv2.html",
+      "/posts/RTV/RTV.html",
       "/posts/DuoGuard/DuoGuard.html",
       "/posts/DeepSeek-R1/DeepSeek-R1.html",
       "/posts/Mind Evolution/Mind Evolution.html",
