@@ -2,6 +2,8 @@
   {
     "listing": "/articles.html",
     "items": [
+      "/posts/Youtu-Agent/Youtu-Agent.html",
+      "/posts/MemAct/MemAct.html",
       "/posts/Falcon-H1/Falcon-H1.html",
       "/posts/BitNetv2/BitNetv2.html",
       "/posts/RTV/RTV.html",
@@ -23,7 +25,6 @@
       "/posts/JanusFlow/JanusFlow.html",
       "/posts/NEKO/NEKO.html",
       "/posts/BitNeta48/BitNeta48.html",
-      "/posts/MemAct/MemAct.html",
       "/posts/Structrag/Structrag.html",
       "/posts/Backtracking/Backtracking.html",
       "/posts/RULER/RULER.html",
@@ -103,7 +104,6 @@
       "/posts/METRAG/METRAG.html",
       "/posts/Nest/Nest.html",
       "/posts/VeLoRA/VeLoRA.html",
-      "/posts/Youtu-Agent/Youtu-Agent.html",
       "/posts/Zamba/zamba.html",
       "/posts/Layer-Condensed KV Cache/Layer-Condensed KV Cache.html",
       "/posts/Xmodel-VLM/Xmodel-VLM.html",
