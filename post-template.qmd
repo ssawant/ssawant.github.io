@@ -16,22 +16,22 @@ reading-time: true
 ---
 
 <div class="tag-badges">
-  <span class="badge-tag badge-llm">LLM</span>
-  <span class="badge-tag badge-paper">Research paper</span>
+<span class="badge-tag badge-llm">LLM</span>
+<span class="badge-tag badge-paper">Research paper</span>
 </div>
 
 <div class="post-meta">
-  <span>📅 DATE</span>
-  <span>🏢 ORG</span>
+<span>📅 DATE</span>
+<span>🏢 ORG</span>
 </div>
 
 <div class="paper-card">
-  <div class="paper-icon">📄</div>
-  <div>
-    <div class="paper-title">PAPER TITLE</div>
-    <div class="paper-meta">ORG · arXiv XXXX.XXXXX · DATE</div>
-  </div>
-  <a class="paper-link" href="ARXIV_URL" target="_blank">Read paper ↗</a>
+<div class="paper-icon">📄</div>
+<div>
+<div class="paper-title">PAPER TITLE</div>
+<div class="paper-meta">ORG · arXiv XXXX.XXXXX · DATE</div>
+</div>
+<a class="paper-link" href="ARXIV_URL" target="_blank">Read paper ↗</a>
 </div>
 
 ![Architecture figure caption](01.jpeg){.post-cover}

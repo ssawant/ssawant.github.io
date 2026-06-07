@@ -127,6 +127,10 @@ $border-radius: 8px;
   tr:last-child td { border-bottom: none; }
 }
 
+/* ── Hide auto-generated Author / Published title-block meta ─ */
+/* Date stays in front matter for listing sort; just not shown on the post. */
+.quarto-title-meta { display: none; }
+
 /* ── Reading time + breadcrumb ───────────────────────────── */
 .quarto-reading-time { font-size: 13px; color: #94a3b8; }
 
