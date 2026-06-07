@@ -1,0 +1,166 @@
+/*-- scss:defaults --*/
+$font-family-sans-serif: 'Inter', system-ui, sans-serif;
+$headings-font-weight: 600;
+$link-color: #2563eb;
+$code-bg: #f8f9fa;
+$border-radius: 8px;
+
+/*-- scss:rules --*/
+
+/* ── Tag badges ─────────────────────────────────────────── */
+.badge-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin: 0 4px 4px 0;
+  text-decoration: none;
+  line-height: 1.4;
+}
+/* Colour map — one colour per topic family */
+.badge-llm        { background: #EEEDFE; color: #3C3489; }
+.badge-rl         { background: #E1F5EE; color: #085041; }
+.badge-alignment  { background: #FAECE7; color: #712B13; }
+.badge-vision     { background: #E6F1FB; color: #0C447C; }
+.badge-efficiency { background: #FAEEDA; color: #633806; }
+.badge-reasoning  { background: #EAF3DE; color: #27500A; }
+.badge-paper      { background: #F1EFE8; color: #444441; }
+.badge-agents     { background: #FBEAF0; color: #72243E; }
+
+/* ── Paper metadata card ─────────────────────────────────── */
+.paper-card {
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 14px 18px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin: 1.5rem 0;
+  background: #f8fafc;
+
+  .paper-icon {
+    font-size: 24px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .paper-title {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 4px;
+  }
+  .paper-meta {
+    font-size: 12px;
+    color: #64748b;
+  }
+  .paper-link {
+    margin-left: auto;
+    font-size: 12px;
+    white-space: nowrap;
+    align-self: center;
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 500;
+    &:hover { text-decoration: underline; }
+  }
+}
+
+/* ── Post meta line (author · date · org) ────────────────── */
+.post-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  font-size: 13px;
+  color: #64748b;
+  margin: 0.5rem 0 1.5rem;
+
+  span { display: flex; align-items: center; gap: 4px; }
+}
+
+/* ── Pipeline / phase steps ──────────────────────────────── */
+.pipeline {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+  margin: 1.5rem 0;
+}
+.pipeline-step {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 12px 10px;
+  text-align: center;
+
+  .step-num  { font-size: 11px; color: #94a3b8; margin-bottom: 4px; font-weight: 500; }
+  .step-name { font-size: 13px; font-weight: 600; color: #1e293b; line-height: 1.3; }
+  .step-desc { font-size: 11px; color: #64748b; margin-top: 4px; line-height: 1.4; }
+}
+
+/* ── Benchmark table ─────────────────────────────────────── */
+.bench-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  margin: 1.5rem 0;
+
+  th {
+    text-align: left;
+    font-size: 11px;
+    font-weight: 600;
+    color: #64748b;
+    padding: 8px 12px;
+    border-bottom: 2px solid #e2e8f0;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  td {
+    padding: 9px 12px;
+    border-bottom: 1px solid #f1f5f9;
+    color: #334155;
+  }
+  tr.highlight td {
+    background: #EEEDFE;
+    font-weight: 600;
+    color: #26215C;
+  }
+  tr:last-child td { border-bottom: none; }
+}
+
+/* ── Reading time + breadcrumb ───────────────────────────── */
+.quarto-reading-time { font-size: 13px; color: #94a3b8; }
+
+/* ── Cover image ─────────────────────────────────────────── */
+.post-cover {
+  width: 100%;
+  max-height: 340px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  margin: 1rem 0 1.5rem;
+}
+
+/* ── Callout overrides — tighter, more distinctive ──────── */
+.callout {
+  border-radius: 8px;
+  margin: 1.5rem 0;
+}
+.callout-tip    { border-left-color: #7F77DD !important; }
+.callout-note   { border-left-color: #1D9E75 !important; }
+.callout-important { border-left-color: #185FA5 !important; }
+.callout-warning { border-left-color: #BA7517 !important; }
+
+/* ── Mermaid diagram container ───────────────────────────── */
+.mermaid-wrapper {
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 1.5rem 0;
+  background: #fafafa;
+  overflow-x: auto;
+}
+
+/* ── Article listing cards (articles.qmd) ────────────────── */
+.quarto-post .listing-title { font-weight: 600; }
+.quarto-post .listing-description { font-size: 13px; }
+.quarto-listing-category-title { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; }

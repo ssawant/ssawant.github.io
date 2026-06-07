@@ -8,8 +8,9 @@
 
 <meta name="author" content="Santosh Sawant">
 <meta name="dcterms.date" content="2025-04-28">
+<meta name="description" content="Native 4-bit activation quantization for 1-bit LLMs via an online Hadamard transformation that tames activation outliers.">
 
-<title>BitNet v2: Native 4-bit Activations with Hadamard Transformation for 1-bit LLMs</title>
+<title>Santosh Sawant - BitNet v2: Native 4-bit Activations with Hadamard Transformation for 1-bit LLMs</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -68,17 +69,33 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
 
 
-<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="Santosh Sawant - BitNet v2: Native 4-bit Activations with Hadamard Transformation for 1-bit LLMs">
+<meta property="og:description" content="Native 4-bit activation quantization for 1-bit LLMs via an online Hadamard transformation that tames activation outliers.">
+<meta property="og:image" content="https://ssawant.github.io/posts/BitNetv2/01.jpeg">
+<meta property="og:site_name" content="Santosh Sawant">
+<meta name="twitter:title" content="Santosh Sawant - BitNet v2: Native 4-bit Activations with Hadamard Transformation for 1-bit LLMs">
+<meta name="twitter:description" content="Native 4-bit activation quantization for 1-bit LLMs via an online Hadamard transformation that tames activation outliers.">
+<meta name="twitter:image" content="https://ssawant.github.io/posts/BitNetv2/01.jpeg">
+<meta name="twitter:creator" content="@ssawant">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Santosh Sawant</span>
+    </a>
+  </div>
             <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
@@ -90,17 +107,17 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../resume.html"> 
-<span class="menu-text">Resume</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="../../articles.html"> 
 <span class="menu-text">Articles</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../resume.html"> 
+<span class="menu-text">Resume</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/"> <i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/ssawant"> <i class="bi bi-github" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -121,9 +138,14 @@ ul.task-list li input[type="checkbox"] {
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <h1 class="title">BitNet v2: Native 4-bit Activations with Hadamard Transformation for 1-bit LLMs</h1>
-                                <div class="quarto-categories">
+                  <div>
+        <div class="description">
+          Native 4-bit activation quantization for 1-bit LLMs via an online Hadamard transformation that tames activation outliers.
+        </div>
+      </div>
+                          <div class="quarto-categories">
                 <div class="quarto-category">llm</div>
-                <div class="quarto-category">research paper</div>
+                <div class="quarto-category">efficiency</div>
               </div>
                   </div>
   </div>
@@ -152,7 +174,9 @@ ul.task-list li input[type="checkbox"] {
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        
+    </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
@@ -160,13 +184,59 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<p><img src="01.jpeg" class="img-fluid"></p>
+<div class="tag-badges">
+<p><span class="badge-tag badge-llm">LLM</span> <span class="badge-tag badge-efficiency">Efficiency</span></p>
+</div>
+<div class="post-meta">
+<p><span>📅 April 28, 2025</span> <span>🏢 Microsoft Research</span></p>
+</div>
+<div class="paper-card">
+<div class="paper-icon">
+📄
+</div>
+<div>
+<pre><code>&lt;div class="paper-title"&gt;BitNet v2: Native 4-bit Activations with Hadamard Transformation for 1-bit LLMs&lt;/div&gt;
+&lt;div class="paper-meta"&gt;Microsoft Research · arXiv 2309.15582 · April 2025&lt;/div&gt;</code></pre>
+</div>
+<p><a class="paper-link" href="https://arxiv.org/abs/2309.15582" target="_blank">Read paper ↗</a></p>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="01.jpeg" class="post-cover img-fluid figure-img"></p>
+<figcaption>BitNet v2 H-BitLinear layer</figcaption>
+</figure>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Key Innovation">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Key Innovation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>H-BitLinear applies an online Hadamard transformation before activation quantization, reshaping outlier-heavy intermediate states into Gaussian-like distributions that survive native 4-bit quantization.</p>
+</div>
+</div>
 <p>Recently pioneering work like BitNet b1.58 demonstrated that 1.58-bit LLMs can match full-precision performance while drastically reducing inference costs (latency, memory, throughput, energy) and it’s all possible due to lower bit-width activations, which is crucial for maximizing hardware utilization, particularly for efficient kernel design in batched inference scenarios.</p>
 <p>However research highlights a key challenge: the non-uniform distribution of activations within LLMs. While inputs to attention and feed-forward network (FFN) layers often exhibit Gaussian-like distributions amenable to quantization, their intermediate states (outputs before final projection) contain significant outliers, hindering aggressive low-bit quantization.</p>
 <p>To address this researchers have introduced BitNet v2, a novel framework enabling native 4-bit activation quantization for 1-bit LLMs. The core innovation is H-BitLinear, a novel linear layer replacing the standard output projections in attention and down projections in FFNs. H-BitLinear applies an online Hadamard transformation before activation quantization. This strategically reshapes the sharp, outlier-prone distributions of intermediate states into more manageable, Gaussian-like forms, significantly reducing the impact of outliers in 1.58-bit models.</p>
-<p>BitNet v2 is implemented using LLaMAlike components, including RMS normalization, SwishGLU and removing all bias. Compared to BitNet, H-BitLinear is used for Wo in attention and Wdown in FFN layers to deal with outlier channels of intermediate states. BitNet v2 is trained with 1.58-bit weights and INT8 activations from scratch, then continue-trained with INT4 activations for all linear layers except input/output embedding.</p>
+<p>BitNet v2 is implemented using LLaMA-like components, including RMS normalization, SwishGLU and removing all bias. Compared to BitNet, H-BitLinear is used for Wo in attention and Wdown in FFN layers to deal with outlier channels of intermediate states. BitNet v2 is trained with 1.58-bit weights and INT8 activations from scratch, then continue-trained with INT4 activations for all linear layers except input/output embedding.</p>
 <p>Extensive experiments demonstrate that 4-bit BitNet v2 variant achieves performance comparable to BitNet a4.8 while offering superior computational efficiency for batched inference scenarios.</p>
-<p>Paper : <a href="https://arxiv.org/abs/2309.15582">BitNet v2: Native 4-bit Activations with Hadamard Transformation for 1-bit LLMs</a></p>
+<div class="callout callout-style-default callout-note callout-titled" title="Key Result">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Key Result
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The 4-bit BitNet v2 matches BitNet a4.8 quality while delivering superior compute efficiency for batched inference.</p>
+</div>
+</div>
 
 
 
@@ -250,6 +320,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/ssawant\.github\.io");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -559,8 +647,22 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>© 2025 Santosh Sawant · LLM Architect</p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
 
 
 
 
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

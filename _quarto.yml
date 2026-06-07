@@ -1,26 +1,53 @@
 project:
   type: website
   output-dir: docs
+  render:
+    - "*.qmd"
+    - "posts/"
+    - "!post-template.qmd"
 
 website:
-  # title: "ML"
+  title: "Santosh Sawant"
+  description: "LLM research paper summaries by an LLM Architect"
+  site-url: https://ssawant.github.io
+  open-graph: true
+  twitter-card:
+    creator: "@ssawant"
   navbar:
     left:
-    - text: Home
-      href: index.qmd
-    - text: Resume
-      href: resume.qmd
-    - text: Articles
-      href: articles.qmd
+      - href: index.qmd
+        text: Home
+      - href: articles.qmd
+        text: Articles
+      - href: resume.qmd
+        text: Resume
     right:
       - icon: github
-        href: https://github.com/
+        href: https://github.com/ssawant
       - icon: linkedin
         href: https://www.linkedin.com/in/santoshnsavant/
+  page-footer:
+    center: "© 2025 Santosh Sawant · LLM Architect"
+
 format:
   html:
-    theme: cosmo
-    css: styles.css
+    theme: [litera, custom.scss]
+    html-math-method: katex
+    highlight-style: github
+    code-copy: true
+    code-overflow: wrap
+    toc: true
+    toc-depth: 3
+    toc-title: "In this post"
+    reading-time: true
+    number-sections: false
+    smooth-scroll: true
+    link-external-newwindow: true
+    include-in-header:
+      text: |
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
-
-
+execute:
+  echo: false
+  warning: false

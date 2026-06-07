@@ -1,0 +1,57 @@
+---
+title: "PAPER TITLE"
+description: "One sentence summary for the article listing."
+author: "Santosh Sawant"
+date: "YYYY-MM-DD"
+categories:
+  - llm
+  - research-paper
+paper-title: "PAPER TITLE"
+paper-org: "ORG NAME"
+paper-url: "https://arxiv.org/abs/XXXX.XXXXX"
+paper-date: "Month YYYY"
+image: 01.jpeg
+toc: true
+reading-time: true
+---
+
+<div class="tag-badges">
+  <span class="badge-tag badge-llm">LLM</span>
+  <span class="badge-tag badge-paper">Research paper</span>
+</div>
+
+<div class="post-meta">
+  <span>📅 DATE</span>
+  <span>🏢 ORG</span>
+</div>
+
+<div class="paper-card">
+  <div class="paper-icon">📄</div>
+  <div>
+    <div class="paper-title">PAPER TITLE</div>
+    <div class="paper-meta">ORG · arXiv XXXX.XXXXX · DATE</div>
+  </div>
+  <a class="paper-link" href="ARXIV_URL" target="_blank">Read paper ↗</a>
+</div>
+
+![Architecture figure caption](01.jpeg){.post-cover}
+
+::: {.callout-tip title="Key Innovation"}
+What is genuinely new here — one or two sentences.
+:::
+
+BODY TEXT — explain the paper in plain language. Aim for 3-5 paragraphs.
+Each paragraph = one key idea. No walls of text.
+
+::: {.mermaid-wrapper}
+```{mermaid}
+flowchart LR
+  A[Step 1] --> B[Step 2] --> C[Step 3]
+```
+:::
+
+CONTINUE EXPLANATION if needed...
+
+::: {.callout-note title="Key Result"}
+The single most important finding or benchmark number.
+:::
