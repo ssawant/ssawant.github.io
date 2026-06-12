@@ -390,7 +390,7 @@
   </url>
   <url>
     <loc>https://ssawant.github.io/index.html</loc>
-    <lastmod>2026-06-07T17:30:19.349Z</lastmod>
+    <lastmod>2026-06-12T15:20:21.807Z</lastmod>
   </url>
   <url>
     <loc>https://ssawant.github.io/articles.html</loc>
@@ -783,5 +783,9 @@
   <url>
     <loc>https://ssawant.github.io/posts/Tuning Language Models by Proxy/Tuning Language Models by Proxy.html</loc>
     <lastmod>2024-01-29T16:37:37.360Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ssawant.github.io/posts/MaxProof/MaxProof.html</loc>
+    <lastmod>2026-06-12T15:34:27.342Z</lastmod>
   </url>
 </urlset>
