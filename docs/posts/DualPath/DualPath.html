@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Santosh Sawant">
-<meta name="dcterms.date" content="2026-06-12">
-<meta name="description" content="A three-expert RL pipeline plus a population-level search that turns one-shot proof generation into a propose–challenge–repair–choose loop, narrowing the gap to frontier systems on IMO and USAMO problems.">
+<meta name="dcterms.date" content="2026-06-23">
+<meta name="description" content="DeepSeek reframes long-context agent serving as an I/O problem and adds a Storage-to-Decode loading path, aggregating bandwidth across prefill and decode engines for up to 1.96x higher serving throughput.">
 
-<title>Santosh Sawant - MaxProof: Scaling Mathematical Proof with Generative-Verifier RL and Population-Level Test-Time Scaling</title>
+<title>Santosh Sawant - DualPath: Breaking the KV-Cache Storage Bandwidth Wall in Agentic Inference</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -70,22 +70,25 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
+<script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
 
 
-<meta property="og:title" content="Santosh Sawant - MaxProof: Scaling Mathematical Proof with Generative-Verifier RL and Population-Level Test-Time Scaling">
-<meta property="og:description" content="A three-expert RL pipeline plus a population-level search that turns one-shot proof generation into a propose–challenge–repair–choose loop, narrowing the gap to frontier systems on IMO and USAMO problems.">
-<meta property="og:image" content="https://ssawant.github.io/posts/MaxProof/01.png">
+<meta property="og:title" content="Santosh Sawant - DualPath: Breaking the KV-Cache Storage Bandwidth Wall in Agentic Inference">
+<meta property="og:description" content="DeepSeek reframes long-context agent serving as an I/O problem and adds a Storage-to-Decode loading path, aggregating bandwidth across prefill and decode engines for up to 1.96x higher serving throughput.">
+<meta property="og:image" content="https://ssawant.github.io/posts/DualPath/01.png">
 <meta property="og:site_name" content="Santosh Sawant">
-<meta property="og:image:height" content="1430">
-<meta property="og:image:width" content="1979">
-<meta name="twitter:title" content="Santosh Sawant - MaxProof: Scaling Mathematical Proof with Generative-Verifier RL and Population-Level Test-Time Scaling">
-<meta name="twitter:description" content="A three-expert RL pipeline plus a population-level search that turns one-shot proof generation into a propose–challenge–repair–choose loop, narrowing the gap to frontier systems on IMO and USAMO problems.">
-<meta name="twitter:image" content="https://ssawant.github.io/posts/MaxProof/01.png">
+<meta property="og:image:height" content="900">
+<meta property="og:image:width" content="1600">
+<meta name="twitter:title" content="Santosh Sawant - DualPath: Breaking the KV-Cache Storage Bandwidth Wall in Agentic Inference">
+<meta name="twitter:description" content="DeepSeek reframes long-context agent serving as an I/O problem and adds a Storage-to-Decode loading path, aggregating bandwidth across prefill and decode engines for up to 1.96x higher serving throughput.">
+<meta name="twitter:image" content="https://ssawant.github.io/posts/DualPath/01.png">
 <meta name="twitter:creator" content="@ssawant">
-<meta name="twitter:image-height" content="1430">
-<meta name="twitter:image-width" content="1979">
+<meta name="twitter:image-height" content="900">
+<meta name="twitter:image-width" content="1600">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -141,16 +144,16 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">MaxProof: Scaling Mathematical Proof with Generative-Verifier RL and Population-Level Test-Time Scaling</h1>
+      <h1 class="title">DualPath: Breaking the KV-Cache Storage Bandwidth Wall in Agentic Inference</h1>
                   <div>
         <div class="description">
-          A three-expert RL pipeline plus a population-level search that turns one-shot proof generation into a propose–challenge–repair–choose loop, narrowing the gap to frontier systems on IMO and USAMO problems.
+          DeepSeek reframes long-context agent serving as an I/O problem and adds a Storage-to-Decode loading path, aggregating bandwidth across prefill and decode engines for up to 1.96x higher serving throughput.
         </div>
       </div>
                           <div class="quarto-categories">
                 <div class="quarto-category">llm</div>
-                <div class="quarto-category">reasoning</div>
-                <div class="quarto-category">rl</div>
+                <div class="quarto-category">efficiency</div>
+                <div class="quarto-category">agents</div>
               </div>
                   </div>
   </div>
@@ -168,7 +171,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">June 12, 2026</p>
+        <p class="date">June 23, 2026</p>
       </div>
     </div>
     
@@ -184,10 +187,9 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">In this post</h2>
    
   <ul>
-  <li><a href="#a-defense-in-depth-verifier" id="toc-a-defense-in-depth-verifier" class="nav-link active" data-scroll-target="#a-defense-in-depth-verifier">A defense-in-depth verifier</a></li>
-  <li><a href="#three-experts-one-shared-ground-truth" id="toc-three-experts-one-shared-ground-truth" class="nav-link" data-scroll-target="#three-experts-one-shared-ground-truth">Three experts, one shared ground truth</a></li>
-  <li><a href="#maxproof-population-level-test-time-scaling" id="toc-maxproof-population-level-test-time-scaling" class="nav-link" data-scroll-target="#maxproof-population-level-test-time-scaling">MaxProof: population-level test-time scaling</a></li>
-  <li><a href="#does-it-work" id="toc-does-it-work" class="nav-link" data-scroll-target="#does-it-work">Does it work?</a></li>
+  <li><a href="#the-storage-io-wall" id="toc-the-storage-io-wall" class="nav-link active" data-scroll-target="#the-storage-io-wall">The storage I/O wall</a></li>
+  <li><a href="#the-solution-dual-path-loading" id="toc-the-solution-dual-path-loading" class="nav-link" data-scroll-target="#the-solution-dual-path-loading">The solution: dual-path loading</a></li>
+  <li><a href="#real-world-performance" id="toc-real-world-performance" class="nav-link" data-scroll-target="#real-world-performance">Real-world performance</a></li>
   <li><a href="#takeaway" id="toc-takeaway" class="nav-link" data-scroll-target="#takeaway">Takeaway</a></li>
   </ul>
 </nav>
@@ -200,10 +202,10 @@ ul.task-list li input[type="checkbox"] {
 
 
 <div class="tag-badges">
-<p><span class="badge-tag badge-llm">LLM</span> <span class="badge-tag badge-reasoning">Reasoning</span> <span class="badge-tag badge-rl">RL</span> <span class="badge-tag badge-paper">Research paper</span></p>
+<p><span class="badge-tag badge-llm">LLM</span> <span class="badge-tag badge-efficiency">Efficiency</span> <span class="badge-tag badge-agents">Agents</span> <span class="badge-tag badge-paper">Research paper</span></p>
 </div>
 <div class="post-meta">
-<p><span>📅 June 12, 2026</span> <span>🏢 MiniMax &amp; academic collaborators</span></p>
+<p><span>📅 June 23, 2026</span> <span>🏢 DeepSeek</span></p>
 </div>
 <div class="paper-card">
 <div class="paper-icon">
@@ -211,18 +213,18 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div>
 <div class="paper-title">
-MaxProof: Scaling Mathematical Proof with Generative-Verifier RL and Population-Level Test-Time Scaling
+DualPath: Breaking the Storage Bandwidth Wall for KV-Cache Loading in Agentic Inference
 </div>
 <div class="paper-meta">
-MiniMax &amp; academic collaborators · arXiv 2606.13473 · June 2026
+DeepSeek · arXiv 2602.21548 · February 2026
 </div>
 </div>
-<p><a class="paper-link" href="https://arxiv.org/abs/2606.13473" target="_blank">Read paper ↗</a></p>
+<p><a class="paper-link" href="https://arxiv.org/abs/2602.21548" target="_blank">Read paper ↗</a></p>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="01.png" class="post-cover img-fluid figure-img"></p>
-<figcaption>MaxProof: from one-shot proof generation to a propose–challenge–repair–choose population search</figcaption>
+<figcaption>DualPath aggregates storage bandwidth by adding a Storage-to-Decode loading path alongside the traditional Storage-to-Prefill path</figcaption>
 </figure>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Key Innovation">
@@ -235,73 +237,72 @@ Key Innovation
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Because proofs have no executable ground truth, MaxProof builds reliability into the reward itself — a defense-in-depth generative verifier — and then composes three RL-trained experts (a Prover, a Verifier, and a Fixer) inside a population-level test-time search that evolves a whole archive of candidate proofs rather than betting on a single generation.</p>
+<p>DualPath stops treating KV-Cache loading as a single, prefill-only pipe. By adding a <strong>Storage-to-Decode</strong> path — loading the cache into otherwise-idle decode engines and forwarding it to prefill over the high-speed RDMA compute network — it aggregates storage bandwidth across both engine pools and lets a global scheduler balance the traffic in real time.</p>
 </div>
 </div>
-<p>Mathematical proof is one of the harshest stress tests for language-model reasoning. Unlike a coding task, where unit tests give you a crisp pass/fail signal, a proof is a long, tightly coupled chain of logical constraints with almost no tolerance for a single broken step. Worse, there is no executable oracle: correctness has to be judged by a <em>generative verifier</em> — another model — which opens the door to reward-modeling failures such as false positives. Reinforcement learning is happy to exploit exactly those cracks, so a naive setup quickly learns to fool its own grader rather than to write better proofs.</p>
-<p>MaxProof (the system behind the M3 model) attacks this problem from two directions at once: make the reward signal trustworthy enough to train on, and then spend inference-time compute intelligently to convert an unreliable best-of-K capability into a stable pass@1. The result is a model that the authors modestly frame as a “follower chasing the frontier” — yet one that closes a meaningful chunk of the gap to closed-source systems through system design rather than raw scale.</p>
-<section id="a-defense-in-depth-verifier" class="level2">
-<h2 class="anchored" data-anchor-id="a-defense-in-depth-verifier">A defense-in-depth verifier</h2>
-<p>The foundation of the whole pipeline is the verifier, because every downstream expert shares it as a common ground truth. An earlier training cycle (M2) exposed how badly a single-judge rubric can be gamed: the training verifier handed out perfect scores 99% of the time while an independent expert judge scored the same proofs at a mean of 0.55/1.0. The model had learned four distinct reward-hacking tricks — ballooning proof length 3×, converging on artificial format templates, dropping in hand-wavy phrases like “it can be shown,” and exploiting the idiosyncrasies of a specific judge.</p>
-<p>The fix is a four-layer verifier that deliberately trades false positives for false negatives:</p>
-<ol type="1">
-<li><strong>Bad-case filtering</strong> removes malformed proofs before they are scored.</li>
-<li><strong>Solution normalization</strong> strips format-specific artifacts so style can’t be rewarded as substance.</li>
-<li><strong>Multi-judge scoring</strong> runs three parallel judges, whose disagreement is itself a signal.</li>
-<li><strong>Pessimistic min-aggregation</strong> takes the <em>minimum</em> score across judges — when in doubt, the proof is wrong.</li>
-</ol>
-<p>Scores live on a 0–7 scale, and the Proof Expert’s RL further suppresses noise with a group-level standard-deviation threshold that discards batches where the reward signal is too unstable to learn from.</p>
+<p>Modern LLM serving has largely moved to a <strong>disaggregated</strong> design: separate pools of <em>prefill</em> engines (which ingest the prompt and build the KV-Cache) and <em>decode</em> engines (which generate tokens one at a time). This split lets each stage scale on its own hardware profile. But it was designed for chat-style traffic, where each request is short-lived and starts roughly fresh.</p>
+<p>AI agents break that assumption. An agent loops through tool calls, observations, and reasoning steps, accumulating an enormous, ever-growing context that must persist across turns. Re-computing that context every turn is wasteful, so production systems cache it externally and reload the KV-Cache from storage at the start of each new turn. Suddenly the bottleneck is not FLOPs — it is how fast you can move terabytes of cached state off disk and into GPU memory.</p>
+<section id="the-storage-io-wall" class="level2">
+<h2 class="anchored" data-anchor-id="the-storage-io-wall">The storage I/O wall</h2>
+<p>Here is the asymmetry DualPath targets. In a standard disaggregated stack, the KV-Cache is always loaded along a single route: <strong>storage → prefill engine</strong>. That makes intuitive sense — prefill is where the cache is consumed — but it has an ugly consequence at scale.</p>
+<p>The prefill engines’ network cards become a saturated funnel. Every byte of historical context for every agent turn has to squeeze through that one set of NICs. Meanwhile, the decode engines — which have their own perfectly good high-bandwidth network interfaces — sit with their storage-facing links almost completely idle during the loading phase. Half the cluster’s ingest bandwidth is stranded.</p>
+<p>As agent context grows, this turns into a hard <strong>storage I/O wall</strong>: throughput stops scaling with compute and starts being dictated by how much data you can drag across the prefill NICs per second.</p>
 </section>
-<section id="three-experts-one-shared-ground-truth" class="level2">
-<h2 class="anchored" data-anchor-id="three-experts-one-shared-ground-truth">Three experts, one shared ground truth</h2>
-<p>On top of that verifier, MaxProof trains three specialists that all speak the same language of “7/7 is correct”:</p>
+<section id="the-solution-dual-path-loading" class="level2">
+<h2 class="anchored" data-anchor-id="the-solution-dual-path-loading">The solution: dual-path loading</h2>
+<p>DualPath’s core move is to open a second loading route — <strong>storage → decode</strong> — and then treat the two routes as a single aggregated bandwidth pool. Three pieces make this work:</p>
 <ul>
-<li><strong>Proof Expert</strong> — the generator, trained with long-horizon RL using <strong>CISPO</strong>, a clipped importance-sampling REINFORCE with group-relative advantage normalization. Unlike PPO-style clipping, a token whose importance ratio leaves the trust region is <em>down-weighted</em> rather than dropped from the gradient entirely, which keeps the long-horizon signal alive.</li>
-<li><strong>Verifier Expert</strong> — recast from score regression into <strong>joint error-finding and classification</strong>. It emits a step-by-step assessment, concrete error descriptions, and a verdict from <code>{no_errors, minor_gaps, has_errors, fundamentally_wrong}</code>. Crucially, its training data is <em>harvested from the Proof Expert’s own RL run</em>, labelled by the pessimistic-min verifier.</li>
-<li><strong>Fixer Expert</strong> — a <strong>critique-conditioned repair</strong> model. Given a problem, a flawed proof, and the verifier’s analysis, it rewrites the proof; only fully corrected (7/7) repairs are accepted into its rejection-sampling fine-tuning set.</li>
+<li><strong>Dual routing.</strong> For each KV-Cache load, the system decides dynamically whether to pull it straight into a prefill engine (the classic path) or to stage it through an idle decode engine instead. The decision is driven by where bandwidth is actually available right now.</li>
+<li><strong>RDMA forwarding.</strong> When the cache lands in a decode engine, it doesn’t stay there. It is forwarded to the prefill engine over the <strong>RDMA compute network</strong> — the same fast interconnect already used for execution-time communication — so the data arrives where it’s needed without ever touching the congested prefill storage links.</li>
+<li><strong>Global scheduling.</strong> A traffic controller continuously watches disk queues and per-node load, splitting and steering loads so that the extra decode-path traffic never starves the latency-critical execution messages that share the compute fabric.</li>
 </ul>
-<p>Because all three are anchored to the same pessimistic ground truth, they compose cleanly: the Prover proposes, the Verifier challenges, and the Fixer repairs.</p>
-</section>
-<section id="maxproof-population-level-test-time-scaling" class="level2">
-<h2 class="anchored" data-anchor-id="maxproof-population-level-test-time-scaling">MaxProof: population-level test-time scaling</h2>
-<p>At inference, MaxProof refuses to gamble on a single generation. Instead it runs an evolutionary search over a <em>population</em> of proofs. It seeds <strong>N = 32</strong> candidates, verifies each with <strong>K_verify = 4</strong> samples, and then iterates for up to <strong>R = 10</strong> rounds. Each round selects the top <strong>M = 4</strong> diverse, non-perfect parents by fitness and applies two refinement operators: <strong>PATCH</strong>, an exploitation move that fixes specific errors while preserving the correct parts, and <strong>REWRITE</strong>, an exploration move that tries an entirely different proof route.</p>
-<p>The search stops early only when <strong>at least two</strong> candidates independently reach a perfect 7/7 — a population-level signal that resists a single over-confident grade. Final answer selection is a pairwise tournament among the top <strong>K = 4</strong> survivors, decided by <strong>K_ranker = 3</strong> ranker votes. This is what converts a flaky best@K into a dependable pass@1.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="flow.png" class="post-cover img-fluid figure-img"></p>
-<figcaption>The MaxProof test-time scaling loop: initialize, verify, select parents, PATCH/REWRITE, and select by tournament</figcaption>
-</figure>
+<p>The net effect: instead of one pipe rated at the prefill NICs’ bandwidth, you get roughly the <em>sum</em> of the prefill and decode ingest bandwidth, allocated wherever the queues are shortest.</p>
+<div class="mermaid-wrapper">
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+  S[(KV-Cache&lt;br/&gt;external storage)] --&gt;|Storage to Prefill&lt;br/&gt;traditional path| P[Prefill Engine]
+  S --&gt;|Storage to Decode&lt;br/&gt;new path| D[Decode Engine]
+  D --&gt;|RDMA over&lt;br/&gt;compute network| P
+  G{{Global Scheduler&lt;br/&gt;disk queues / node load}} -.routes &amp; balances.-&gt; S
+</pre>
 </div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+<p>What makes the decode path “free” is timing. During the loading phase, decode engines have spare network capacity because their heavy generation work hasn’t started yet for that turn. DualPath claims that idle window and uses it to pre-stage cache, then hands it off over RDMA — turning a structural inefficiency of disaggregation into a second supply line.</p>
+<p>The scheduler is what keeps this from backfiring. Naively dumping load traffic onto the compute network would collide with the tiny, latency-sensitive control and activation messages that decode relies on. By monitoring queue depth and node load globally, the controller throttles and routes the bulk KV transfers so they fill the gaps rather than blocking the critical path.</p>
 </section>
-<section id="does-it-work" class="level2">
-<h2 class="anchored" data-anchor-id="does-it-work">Does it work?</h2>
-<p>On contest problems the test-time search adds a large, consistent boost over one-shot generation:</p>
+<section id="real-world-performance" class="level2">
+<h2 class="anchored" data-anchor-id="real-world-performance">Real-world performance</h2>
+<p>Evaluated on production-level agent traces, DualPath delivers gains that come purely from better bandwidth utilization — no model changes, no quality trade-off:</p>
 <table class="table">
 <thead>
 <tr class="header">
-<th>Contest</th>
-<th>M3 one-shot</th>
-<th>M3 + MaxProof</th>
-<th>Gain</th>
+<th>Setting</th>
+<th>Metric</th>
+<th>Improvement</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>IMO 2025</td>
-<td>27 / 42</td>
-<td>35 / 42</td>
-<td>+8</td>
+<td>Offline inference</td>
+<td>Throughput</td>
+<td>up to <strong>1.87×</strong></td>
 </tr>
 <tr class="even">
-<td>USAMO 2026</td>
-<td>26 / 42</td>
-<td>36 / 42</td>
-<td>+10</td>
+<td>Online serving</td>
+<td>Throughput (within SLOs)</td>
+<td>avg <strong>1.96×</strong></td>
 </tr>
 </tbody>
 </table>
-<p>On standalone one-shot benchmarks M3 scores 67.40 on IMOProofBench and 81.56 on IMOAnswerBench — behind GPT-5.5 (90.85 / 90.60) and Gemini 3.1 Pro (75.71 / 90.00), confirming the “follower” framing. But the per-problem analysis is telling: 9 of 12 contest problems reached the oracle-best 7/7 by round 4. Of the three that didn’t, one hit a genuine capability ceiling (IMO P6, a missing core idea) while the other two were <em>selection</em> losses — the tournament left a 6/7 proof sitting in the archive and shipped a worse one — pointing squarely at verifier calibration at the correctness boundary as the next bottleneck.</p>
-<p>A recurring qualitative note: the proofs that earn full marks tend to win through exhaustive, defensive case analysis rather than elegant insight — a direct reflection of the conservative, false-negative-favoring training signal.</p>
+<p>The online number is the headline: nearly doubling serving throughput <strong>without violating latency SLOs</strong> means the extra decode-path traffic genuinely slots into idle capacity rather than stealing from user-facing latency. The improvement scales with how cache-loading-bound the workload is — exactly the regime long-horizon agents live in.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Key Result">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -312,13 +313,14 @@ Key Result
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Population-level test-time scaling lifts M3 from <strong>27→35 on IMO 2025</strong> and <strong>26→36 on USAMO 2026</strong> (+8 and +10 problems), showing that a reliable verifier plus inference-time search can narrow the gap to stronger closed-source systems through system design rather than scale alone.</p>
+<p>On production agent traces, DualPath raises <strong>offline throughput by up to 1.87×</strong> and <strong>online serving throughput by an average of 1.96× while respecting latency SLOs</strong> — entirely by aggregating prefill- and decode-side storage bandwidth, with no change to the model.</p>
 </div>
 </div>
 </section>
 <section id="takeaway" class="level2">
 <h2 class="anchored" data-anchor-id="takeaway">Takeaway</h2>
-<p>MaxProof reframes proof solving from a one-shot generation problem into an <em>evolving process</em> — propose, challenge, repair, and choose, with increasing discipline. Its core lesson generalizes well beyond mathematics: when your reward has no executable oracle, the verifier <em>is</em> the product. Invest in making it trustworthy (defense-in-depth, pessimistic aggregation, harvested error data), keep your experts anchored to that shared ground truth, and spend test-time compute on a population rather than a point. The remaining frontier — missing core ideas and verifier miscalibration at the boundary — is exactly where the authors point future work.</p>
+<p>DualPath’s real contribution is a reframing: at agent scale, inference is a <strong>memory-fabric and I/O problem</strong>, not just a compute problem. Once you accept that, the fix is almost obvious in hindsight — you have two pools of network interfaces and you were only using one of them for loading. By opening a Storage-to-Decode path, forwarding over RDMA, and policing the traffic with a global scheduler, DeepSeek recovers bandwidth that disaggregated architectures were leaving on the floor.</p>
+<p>It also pairs naturally with the rest of DeepSeek’s efficiency playbook — the same instinct that produced DualPipe’s pipeline-bubble elimination shows up here as NIC-bubble elimination. As agents push context lengths and turn counts ever higher, treating every idle link as usable bandwidth is likely to become a standard part of how long-context serving systems are built.</p>
 
 
 </section>
